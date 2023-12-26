@@ -1,0 +1,53 @@
+.SearchBar_Container {
+  margin: auto;
+  flex-grow: 2;
+  display: flex;
+  height: 2rem;
+}
+.SearchBar_Container2 {
+  margin: auto;
+  display: flex;
+}
+.search_div {
+  display: flex;
+  margin: auto;
+  position: relative;
+  z-index: 91;
+}
+
+.iBox_SearchBar {
+  background-color: rgb(18, 18, 18);
+  width: 30rem;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  color: white;
+  font-size: large;
+  border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+  height: 2rem;
+  padding: 0.2rem;
+  padding-left: 2rem;
+}
+.searchIcon_SearchBar{
+  width: 1.97rem;
+  padding: 0.75rem;
+  height:fit-content;
+  /* border-radius: 0.1rem; */
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+  color: aliceblue;
+
+  background-color: rgb(78, 78, 78);
+}
+.Mic_SearchBar{
+  width: 1.97rem;
+  padding: 0.74rem;
+  height:fit-content;
+  color: aliceblue;
+  margin-left: 0.5rem;
+  background-color: rgb(78, 78, 78);
+  border-radius: 100%;
+
+}
+.Mic_SearchBar:hover{
+  background-color: rgb(166, 101, 101);
+}

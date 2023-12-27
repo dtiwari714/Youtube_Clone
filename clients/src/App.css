@@ -1,3 +1,19 @@
+.Chanel_logo_App{
+  width: 2.2rem;  
+  height: 2.2rem;
+  margin: auto;
+  border-radius: 100%;
+  background-color: rgb(224,227,214);
+  display: flex;
+}
+.fstChar_logo_App{
+  margin: auto;
+  color: black;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+
 /* .App {
   text-align: center;
 }

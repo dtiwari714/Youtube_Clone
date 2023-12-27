@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 import logo from "../Navbar/logo.ico";
 import SearchBar from "./SearchBar/SearchBar";
 import { RiVideoAddLine } from "react-icons/ri";
@@ -26,10 +27,10 @@ function NavBar() {
           <p></p>
         </div>
 
-        <div className="logo_div_Navbar">
+        <Link to={"/"} className="logo_div_Navbar">
           <img src={logo} alt="" />
           <p className="logo_title_navbar">YouTube</p>
-        </div>
+        </Link>
       </div>
       {/* <div className="Header_Search"> */}
       <SearchBar />

@@ -9,7 +9,7 @@ import { IoIosNotifications } from "react-icons/io";
 import { IoApps } from "react-icons/io5";
 import { BiUserCircle } from "react-icons/bi";
 
-function NavBar() {
+function NavBar({toggleDrawer}) {
   // const CurrentUser = null;
   const CurrentUser = {
     result: {
@@ -21,7 +21,7 @@ function NavBar() {
   return (
     <div className="Container_Navbar">
       <div className="Burger_Logo_Navbar">
-        <div className="burger">
+        <div className="burger" onClick={()=>toggleDrawer()}>
           <p></p>
           <p></p>
           <p></p>

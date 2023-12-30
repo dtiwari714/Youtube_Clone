@@ -40,17 +40,17 @@ function Home() {
     },
   ];
 
-  const NavList = [
-    "All",
-    "Python",
-    "Java",
-    "C++",
-    "Movies",
-    "Science",
-    "Animation",
-    "Gaming",
-    "Comedy",
-  ];
+  // const NavList = [
+  //   "All",
+  //   "Python",
+  //   "Java",
+  //   "C++",
+  //   "Movies",
+  //   "Science",
+  //   "Animation",
+  //   "Gaming",
+  //   "Comedy",
+  // ];
   return (
     <div className="container_Pages_App">
       <LeftSideBar />

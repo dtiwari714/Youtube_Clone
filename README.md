@@ -1,1 +1,1 @@
-Youtube Clone intenship projecct
+Youtube Clone intenship project

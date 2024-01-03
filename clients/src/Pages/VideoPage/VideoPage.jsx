@@ -1,6 +1,7 @@
 import React from "react";
 import vid from "../../components/Video/video.mp4";
 import "./VideoPage.css";
+import LikeWatchLaterSaveBtns from "./LikeWatchLaterSaveBtns";
 
 function VideoPage() {
   return (
@@ -25,8 +26,10 @@ function VideoPage() {
                     {/* {moment(vv?.createdAt).fromNow()} */}
                     upload 1 year ago
                 </div>
+                <LikeWatchLaterSaveBtns/>
                 </div>
               </div>
+              
               <div
                 // to={`/chanel/${vv?.videoChanel}`}
                 className="chanel_details_videoPage"
@@ -46,6 +49,7 @@ function VideoPage() {
                 <h2>
                   <u>Comments</u>
                 </h2>
+
                 {/* <Comments  videoId={vv._id}/> */}
               </div>
             </div>

@@ -1,14 +1,14 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ShowVideo.css";
 import moment from "moment";
 
 function ShowVideo({ vid }) {
   return (
     <>
-      <div>
+      <Link to={`/videopage/${vid?.id}`}>
         <video src={`${vid?.video_src}`} className="video_ShowVideo" />
-      </div>
+      </Link>
       <div className="video_description">
         <div className="Chanel_logo_App">
           <div className="fstChar_logo_App">

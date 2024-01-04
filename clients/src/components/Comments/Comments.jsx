@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Comments.css";
+import DisplayComments from "./DisplayComments";
 function Comments() {
   const [commentText, setCommentText] = useState("");
   const handleOnSubmit = (e) => {
@@ -7,7 +8,7 @@ function Comments() {
     console.log(commentText);
     setCommentText("");
   };
-  const commetsList = [
+  const commentsList = [
     {
       _id: "1",
       commentBody: "hello",
@@ -33,7 +34,18 @@ function Comments() {
         <input type="submit" value="add" className="comment_add_btn_comments" />
       </form>
       <div className="display_comment_container">
-        
+{
+    commentsList.map((m)=>{
+        return(
+        <DisplayComments
+        cId={m._id}
+        commentBody={m.commentBody}
+        userCommented={m.userCommented}
+        />
+        )
+
+    })
+}
       </div>
     </>
   );

@@ -14,7 +14,7 @@ function VideoPage() {
               src={vid}
               className={"video_ShowVideo_videoPage"}
               controls
-              autoPlay
+              // autoPlay
             ></video>
             <div className="video_details_videoPage">
               <div className="video_btns_title_VideoPage_cont">

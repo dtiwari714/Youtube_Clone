@@ -3,6 +3,7 @@ import "./ShowVideoGrid.css";
 import ShowVideo from "../ShowVideo/ShowVideo";
 
 function ShowVideoGrid({ vids }) {
+  console.log(vids);
   return (
     <div className="Container_ShowVideoGrid">
       {vids?.reverse().map((vi) => {

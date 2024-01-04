@@ -1,6 +1,7 @@
 import React from "react";
 import vid from "../../components/Video/video.mp4";
 import "./VideoPage.css";
+import Comments from "../../components/Comments/Comments";
 import LikeWatchLaterSaveBtns from "./LikeWatchLaterSaveBtns";
 
 function VideoPage() {
@@ -50,7 +51,9 @@ function VideoPage() {
                   <u>Comments</u>
                 </h2>
 
-                {/* <Comments  videoId={vv._id}/> */}
+                <Comments  
+                // videoId={vv._id}
+                />
               </div>
             </div>
           </div>

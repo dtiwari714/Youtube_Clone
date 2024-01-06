@@ -1,27 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../Navbar/logo.ico";
 import SearchBar from "./SearchBar/SearchBar";
+import GoogleLogin from "react-google-login";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoIosNotifications } from "react-icons/io";
 // import { FaUserCircle } from "react-icons/fa";
+import { gapi } from "gapi-script";
 import { IoApps } from "react-icons/io5";
 import { BiUserCircle } from "react-icons/bi";
 
-function NavBar({toggleDrawer}) {
-  // const CurrentUser = null;
-  const CurrentUser = {
-    result: {
-      name:"Durgesh Tiwari",
-      email: "dtiwari714@rku.ac.in",
-      joinedOn: "2222-07-15T09:57:23.489Z",
-    },
+function NavBar({ toggleDrawer }) {
+  const CurrentUser = null;
+  // const CurrentUser = {
+  //   result: {
+  //     name:"Durgesh Tiwari",
+  //     email: "dtiwari714@rku.ac.in",
+  //     joinedOn: "2222-07-15T09:57:23.489Z",
+  //   },
+  // };
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "350764630254-24a99f0k7r7loe703360gk8j0hk7ivhc.apps.googleusercontent.com",
+        scope: "email",
+      })
+      .then(() => {
+        console.log("gapi.client.init successfully executed");
+      })
+      .catch((error) => {
+        console.error("Error initializing gapi.client:", error);
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+  const onSuccess = (response) => {
+    const Email = response?.profileObj.email;
+    console.log(Email);
+  };
+
+  const onFailure = (response) => {
+    console.log("Failed", response);
   };
   return (
     <div className="Container_Navbar">
       <div className="Burger_Logo_Navbar">
-        <div className="burger" onClick={()=>toggleDrawer()}>
+        <div className="burger" onClick={() => toggleDrawer()}>
           <p></p>
           <p></p>
           <p></p>
@@ -57,6 +83,13 @@ function NavBar({toggleDrawer}) {
           </>
         ) : (
           <>
+            <GoogleLogin
+              clientId={
+                "350764630254-24a99f0k7r7loe703360gk8j0hk7ivhc.apps.googleusercontent.com"
+              }
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+            />
             <p className="Auth_Btn">
               <BiUserCircle size={22} className={"user_navbar"} />
               <b className="button_signIn">Sign In</b>

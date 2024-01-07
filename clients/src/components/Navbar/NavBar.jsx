@@ -10,6 +10,8 @@ import { IoIosNotifications } from "react-icons/io";
 import { gapi } from "gapi-script";
 import { IoApps } from "react-icons/io5";
 import { BiUserCircle } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../Actions/auth";
 
 function NavBar({ toggleDrawer }) {
   const CurrentUser = null;
@@ -22,23 +24,28 @@ function NavBar({ toggleDrawer }) {
   // };
   useEffect(() => {
     function start() {
-      gapi.client.init({
-        clientId:
-          "350764630254-24a99f0k7r7loe703360gk8j0hk7ivhc.apps.googleusercontent.com",
-        scope: "email",
-      })
-      .then(() => {
-        console.log("gapi.client.init successfully executed");
-      })
-      .catch((error) => {
-        console.error("Error initializing gapi.client:", error);
-      });
+      gapi.client
+        .init({
+          clientId:
+            "350764630254-24a99f0k7r7loe703360gk8j0hk7ivhc.apps.googleusercontent.com",
+          scope: "email",
+        })
+        .then(() => {
+          console.log("gapi.client.init successfully executed");
+        })
+        .catch((error) => {
+          console.error("Error initializing gapi.client:", error);
+        });
     }
     gapi.load("client:auth2", start);
   }, []);
+
+  const dispatch = useDispatch();
+
   const onSuccess = (response) => {
     const Email = response?.profileObj.email;
     console.log(Email);
+    dispatch(login({email:Email}))
   };
 
   const onFailure = (response) => {

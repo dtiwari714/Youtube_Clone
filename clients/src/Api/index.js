@@ -8,3 +8,5 @@ api.interceptors.request.use((req)=>{
     }
     return req;
 });
+
+export const login = (authData) => api.post("/user/login", authData);

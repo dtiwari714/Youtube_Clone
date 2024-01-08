@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Actions/auth";
 
 function NavBar({ toggleDrawer }) {
-  const CurrentUser = null;
+  // const CurrentUser = null;
   // const CurrentUser = {
   //   result: {
   //     name:"Durgesh Tiwari",
@@ -22,6 +22,8 @@ function NavBar({ toggleDrawer }) {
   //     joinedOn: "2222-07-15T09:57:23.489Z",
   //   },
   // };
+  const CurrentUser=useSelector(state=>state.currentUserReducer)
+  console.log(CurrentUser)
   useEffect(() => {
     function start() {
       gapi.client
@@ -96,11 +98,13 @@ function NavBar({ toggleDrawer }) {
               }
               onSuccess={onSuccess}
               onFailure={onFailure}
+              render={(renderProps)=>(
+                <p onClick={renderProps.onClick} className="Auth_Btn">
+                <BiUserCircle size={22} className={"user_navbar"} />
+                <b className="button_signIn">Sign In</b>
+              </p>
+              )}
             />
-            <p className="Auth_Btn">
-              <BiUserCircle size={22} className={"user_navbar"} />
-              <b className="button_signIn">Sign In</b>
-            </p>
           </>
         )}
       </div>

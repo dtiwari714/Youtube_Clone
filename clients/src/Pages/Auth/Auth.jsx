@@ -6,7 +6,7 @@ import { BiLogOut } from "react-icons/bi";
 import { setCurrentUser } from "../../Actions/currentUser";
 // import { Link } from "react-router-dom";
 
-function Auth({ User, setAuthBtn }) {
+function Auth({ User, setAuthBtn, setEditCreateChanelBtn }) {
   const dispatch = useDispatch();
   const onLogOutSuccess = () => {
     dispatch(setCurrentUser(null));
@@ -29,14 +29,24 @@ function Auth({ User, setAuthBtn }) {
             <div className="email_Auth">{User?.result.email}</div>
           </p>
           <div className="btns_Auth">
+          {User?.result.name ? (
+            <>
+              {
+                <div className="btn_Auth">
+                  Your Chanel
+                </div>
+              }
+            </>
+          ) : (
             <>
               <input
                 type="submit"
                 className="btn_Auth"
                 value="Create Your Chanel"
-                // onClick={() => setEditCreateChanelBtn(true)}
+                onClick={() => setEditCreateChanelBtn(true)}
               />
             </>
+          )}
 
             <div>
               <GoogleLogout

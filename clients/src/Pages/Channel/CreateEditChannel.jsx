@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./CreateEditChannel.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../Actions/auth";
 
 function CreateEditChannel({ setEditCreateChanelBtn }) {
   const CurrentUser = {
@@ -10,6 +12,25 @@ function CreateEditChannel({ setEditCreateChanelBtn }) {
   };
   const [name, setName] = useState(CurrentUser?.result.name);
   const [desc, setDesc] = useState(CurrentUser?.result.desc);
+  const dispatch = useDispatch();
+  const handleSubmit = () => {
+    if (!name) {
+      alert("Plz Enter Name !");
+    } else if (!desc) {
+      alert("Plz Enter Discription !");
+    } else {
+      // dispatch(
+      //   updateChanelDate(CurrentUser?.result._id, {
+      //     name: name,
+      //     desc: desc,
+      //   })
+      // );
+      setEditCreateChanelBtn(false);
+      setTimeout(() => {
+        dispatch(login({ email: CurrentUser?.result.email }));
+      }, 5000);
+    }
+  };
   return (
     <div className="container_CreateEditChanel">
       <input
@@ -43,7 +64,7 @@ function CreateEditChannel({ setEditCreateChanelBtn }) {
         <input
           type="submit"
           value={"Submit"}
-          //   onClick={handleSubmit}
+          onClick={handleSubmit}
           className="ibtn"
         />
       </div>

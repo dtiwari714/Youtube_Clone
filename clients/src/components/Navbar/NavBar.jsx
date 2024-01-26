@@ -10,21 +10,21 @@ import { IoIosNotifications } from "react-icons/io";
 import { gapi } from "gapi-script";
 import { IoApps } from "react-icons/io5";
 import { BiUserCircle } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 import { login } from "../../Actions/auth";
 import Auth from "../../Pages/Auth/Auth";
 
 function NavBar({ toggleDrawer ,setEditCreateChanelBtn }) {
   const [AuthBtn, setAuthBtn] = useState(false)
   // const CurrentUser = null;
-  const CurrentUser = {
-    result: {
-      name:"Durgesh Tiwari",
-      email: "dtiwari714@rku.ac.in",
-      joinedOn: "2222-07-15T09:57:23.489Z",
-    },
-  };
-  // const CurrentUser = useSelector((state) => state.currentUserReducer);
+  // const CurrentUser = {
+  //   result: {
+  //     name:"Durgesh Tiwari",
+  //     email: "dtiwari714@rku.ac.in",
+  //     joinedOn: "2222-07-15T09:57:23.489Z",
+  //   },
+  // };
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
   console.log(CurrentUser);
   useEffect(() => {
     function start() {

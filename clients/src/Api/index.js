@@ -1,12 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
-const api=axios.create({ baseURL: `http://localhost:5500/` });
+const api = axios.create({ baseURL: `http://localhost:5500/` });
 
-api.interceptors.request.use((req)=>{
-    if(localStorage.getItem('Profile')){
-        req.headers.Authorization=`Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
-    }
-    return req;
+api.interceptors.request.use((req) => {
+  if (localStorage.getItem("Profile")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("Profile")).token
+    }`;
+  }
+  return req;
 });
 
 export const login = (authData) => api.post("/user/login", authData);
+
+export const updateChanelData = (id, updateData) =>
+  api.patch(`/user/update/${id}`, updateData);

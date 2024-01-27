@@ -27,7 +27,10 @@ function App() {
         {EditCreateChanelBtn && (
           <CreateEditChannel setEditCreateChanelBtn={setEditCreateChanelBtn} />
         )}
-        <NavBar setEditCreateChanelBtn={setEditCreateChanelBtn} toggleDrawer={toggleDrawer} />
+        <NavBar
+          setEditCreateChanelBtn={setEditCreateChanelBtn}
+          toggleDrawer={toggleDrawer}
+        />
         <DrawerSideBar
           toggleDrawer={toggleDrawer}
           toggleDrawerSidebar={toggleDrawerSidebar}

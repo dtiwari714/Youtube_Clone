@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { GoogleLogout } from "react-google-login";
 import { BiLogOut } from "react-icons/bi";
 import { setCurrentUser } from "../../Actions/currentUser";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 function Auth({ User, setAuthBtn, setEditCreateChanelBtn }) {
   const dispatch = useDispatch();
@@ -32,9 +33,9 @@ function Auth({ User, setAuthBtn, setEditCreateChanelBtn }) {
           {User?.result.name ? (
             <>
               {
-                <div className="btn_Auth">
-                  Your Chanel
-                </div>
+                <Link to={`/channel/${User?.result._id}`} className="btn_Auth">
+                Your Chanel
+              </Link>
               }
             </>
           ) : (

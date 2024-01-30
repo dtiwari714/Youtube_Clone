@@ -15,3 +15,5 @@ export const login = (authData) => api.post("/user/login", authData);
 
 export const updateChanelData = (id, updateData) =>
   api.patch(`/user/update/${id}`, updateData);
+
+export const fetchAllChanel = () => api.get("/user/getAllChannels");

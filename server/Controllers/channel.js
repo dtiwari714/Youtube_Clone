@@ -25,3 +25,22 @@ export const updateChannelData = async (req, res) => {
     res.status(405).json({ message: error.message });
   }
 };
+
+export const getAllChanels = async (req, res) => {
+  try {
+    const allChanels = await users.find();
+
+    const allChanelDetails = [];
+    allChanels.forEach((chanel) => {
+      allChanelDetails.push({
+        _id: chanel._id,
+        name: chanel.name,
+        email: chanel.email,
+        desc: chanel.desc,
+      });  
+    });
+    res.status(200).json(allChanelDetails);
+} catch (error) {
+  res.status(404).json({message: error.message});
+}
+};

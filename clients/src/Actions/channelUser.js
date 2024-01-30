@@ -1,5 +1,13 @@
 import * as api from "../Api";
 
+export const fetchAllChanel=()=>async(dispatch)=>{
+    try {
+        const {data}= await api.fetchAllChanel();
+        dispatch({type:'FETCH_CHANELS',payload:data})
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export const updateChannelData=(id,updateData)=> async(dispatch)=>{
     try {

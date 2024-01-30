@@ -1,10 +1,12 @@
 import React from 'react'
 import LeftSidebar from '../../components/LeftSideBar/LeftSideBar';
 import vid from "../../components/Video/video.mp4";
+import { useParams } from 'react-router-dom';
 import ShowVideoGrid from '../../components/ShowVideoGrid/ShowVideoGrid';
 import DescribeChannel from './DescribeChannel';
 
 function Channel({setEditCreateChanelBtn}) {
+  const {Cid}=useParams();
     const vids = [
           {
             _id: 1,
@@ -43,8 +45,8 @@ function Channel({setEditCreateChanelBtn}) {
     <div className="container_Pages_App">
           <LeftSidebar />
           <div className="container2_Pages_App">
-            
             <DescribeChannel 
+            Cid={Cid}
             setEditCreateChanelBtn={setEditCreateChanelBtn}/>
             <ShowVideoGrid vids={vids} />
           </div>

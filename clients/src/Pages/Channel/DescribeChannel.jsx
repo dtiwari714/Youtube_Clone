@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 
 function DescribeChannel({ setEditCreateChanelBtn, Cid }) {
   const channels = useSelector((state) => state?.chanelReducers);
-  console.log(channels);
+//   console.log(channels);
   const currentChanel = channels.filter((c) => c._id === Cid)[0];
-  console.log(currentChanel);
+//   console.log(currentChanel);
   const CurrentUser = useSelector((state) => state?.currentUserReducer);
   //   console.log(CurrentUser);
   return (
@@ -19,6 +19,8 @@ function DescribeChannel({ setEditCreateChanelBtn, Cid }) {
         <b> {currentChanel?.name} </b>
         <p> {currentChanel?.desc} </p>
       </div>
+      {CurrentUser?.result._id === currentChanel?._id && (
+        <>
       <p
         className="editbtn_chanel"
         onClick={() => {
@@ -32,6 +34,8 @@ function DescribeChannel({ setEditCreateChanelBtn, Cid }) {
         <FaUpload />
         <b> Upload Video</b>
       </p>
+      </>
+       )}
     </div>
   );
 }

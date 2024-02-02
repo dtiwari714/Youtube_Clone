@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-      {vidUploadPage && <VideoUpload  setVidUploadPage={setVidUploadPage}/>}
+      <VideoUpload  setVidUploadPage={setVidUploadPage}/>
         {EditCreateChanelBtn && (
           <CreateEditChannel setEditCreateChanelBtn={setEditCreateChanelBtn} />
         )}

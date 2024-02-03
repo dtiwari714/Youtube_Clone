@@ -17,3 +17,6 @@ export const updateChanelData = (id, updateData) =>
   api.patch(`/user/update/${id}`, updateData);
 
 export const fetchAllChanel = () => api.get("/user/getAllChannels");
+
+export const uploadVideo = (fileData, fileOptions) =>
+  api.post("/video/uploadVideo", fileData, fileOptions);

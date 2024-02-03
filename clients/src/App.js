@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <VideoUpload  setVidUploadPage={setVidUploadPage}/>
+      {vidUploadPage && <VideoUpload  setVidUploadPage={setVidUploadPage}/>}
         {EditCreateChanelBtn && (
           <CreateEditChannel setEditCreateChanelBtn={setEditCreateChanelBtn} />
         )}
@@ -47,7 +47,7 @@ function App() {
           toggleDrawerSidebar={toggleDrawerSidebar}
         />
 
-        <AllRoutes />
+        <AllRoutes setVidUploadPage={setVidUploadPage} setEditCreateChanelBtn={setEditCreateChanelBtn} />
       </Router>
     </div>
   );

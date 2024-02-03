@@ -2,9 +2,11 @@ import * as api from "../Api";
 
 export const uploadVideo = (videoData) => async (dispatch) => {
     try {
-      const { fileData, fileOptions } = videoData;
-    } catch (error) {
-      alert(error.response.data.message)
-    }
+        const { fileData, fileOptions } = videoData;
+        const {data}= await api.uploadVideo(fileData, fileOptions)
+        dispatch({type:'POST_VIDEO',data})
+      } catch (error) {
+        alert(error.response.data.message)
+      }
   };
   

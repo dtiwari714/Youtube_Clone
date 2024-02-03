@@ -17,8 +17,16 @@ function VideoUpload({ setVidUploadPage }) {
   };
 
   const fileOptions = {
-
-  }
+    onUploadProgress: (progressEvent) => {
+      const { loaded, total } = progressEvent;
+      const percentage = Math.floor(((loaded / 1000) * 100) / (total / 1000));
+      setProgress(percentage);
+      if (percentage === 100) {
+        setTimeout(function () {}, 3000);
+        setVidUploadPage(false);
+      }
+    },
+  };
 
   const uploadVideoFile = () => {
     if (!title) {
@@ -33,7 +41,7 @@ function VideoUpload({ setVidUploadPage }) {
       fileData.append("title", title);
       fileData.append("chanel", CurrentUser?.result._id);
       fileData.append("Uploder", CurrentUser?.result.name);
-      //   console.log(videoFile)
+        // console.log(videoFile)
       dispatch(
         uploadVideo({
           fileData: fileData,
@@ -83,7 +91,7 @@ function VideoUpload({ setVidUploadPage }) {
           />
         </div>
         <div className="loader ibox_div_vidupload">
-        <CircularProgressbar
+          <CircularProgressbar
             value={progress}
             text={`${progress}`}
             styles={buildStyles({

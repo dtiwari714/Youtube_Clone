@@ -2,7 +2,11 @@ import { combineReducers } from "redux";
 import authReducer from "./auth";
 import currentUserReducer from "./currentUser";
 import chanelReducers from "./Channel";
+import videoReducer from "./Video";
 
 export default combineReducers({
-    authReducer,currentUserReducer,chanelReducers
-  });
+  authReducer,
+  currentUserReducer,
+  chanelReducers,
+  videoReducer,
+});

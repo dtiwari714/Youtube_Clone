@@ -33,7 +33,7 @@ function VideoUpload({ setVidUploadPage }) {
       alert("Plz Enter A Title of the video");
     } else if (!videoFile) {
       alert("Plz Attach a video File");
-    } else if (videoFile.size > 1000000) {
+    } else if (videoFile.size > 1000000000) {
       alert("Plz Attch video file less than 1kb");
     } else {
       const fileData = new FormData();

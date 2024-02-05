@@ -20,3 +20,5 @@ export const fetchAllChanel = () => api.get("/user/getAllChannels");
 
 export const uploadVideo = (fileData, fileOptions) =>
   api.post("/video/uploadVideo", fileData, fileOptions);
+
+export const getVideos = () => api.get("/video/getvideos");

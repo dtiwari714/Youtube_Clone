@@ -7,12 +7,14 @@ import NavBar from "./components/Navbar/NavBar";
 import { BrowserRouter as Router } from "react-router-dom";
 import CreateEditChannel from "./Pages/Channel/CreateEditChannel";
 import { fetchAllChanel } from "./Actions/channelUser";
+import { getAllVideo } from "./Actions/video";
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllChanel());
+    dispatch(getAllVideo());
   }, [dispatch]);
 
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({

@@ -35,7 +35,7 @@ function VideoPage() {
                     <div className="dot"></div>{" "}
                     {moment(vv?.createdAt).fromNow()}
                   </div>
-                  <LikeWatchLaterSaveBtns />
+                  <LikeWatchLaterSaveBtns vv={vv} vid={vid}/>
                 </div>
               </div>
 

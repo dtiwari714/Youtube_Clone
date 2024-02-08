@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import "./LikeWatchLaterSaveBtns.css";
+import { likeVideo } from "../../Actions/video";
 import {
   AiFillDislike,
   AiFillLike,
   AiOutlineDislike,
   AiOutlineLike,
 } from "react-icons/ai";
+
+import { useDispatch, useSelector } from "react-redux";
 
 import { MdPlaylistAddCheck } from "react-icons/md";
 import {
@@ -15,30 +18,54 @@ import {
   RiShareForwardLine,
 } from "react-icons/ri";
 
-function LikeWatchLaterSaveBtns() {
+function LikeWatchLaterSaveBtns({ vv, vid }) {
+  const CurrentUser = useSelector((state) => state?.currentUserReducer);
+  const dispatch = useDispatch();
   const [SaveVideo, setSaveVideo] = useState(false);
   const [DislikeBtn, setDislikeBtn] = useState(false);
   const [LikeBtn, setLikeBtn] = useState(false);
 
   const toggleSavedVideo = () => {
-    if(SaveVideo){
-        setSaveVideo(false)
-    }else{
-        setSaveVideo(true)
+    if (SaveVideo) {
+      setSaveVideo(false);
+    } else {
+      setSaveVideo(true);
     }
   };
-  const toggleLikeBtn = () => {
-    if(LikeBtn){
-        setLikeBtn(false)
-    }else{
-        setLikeBtn(true)
+  const toggleLikeBtn = (e, lk) => {
+    if (LikeBtn) {
+      setLikeBtn(false);
+      dispatch(
+        likeVideo({
+          id: vid,
+          Like: lk - 1,
+        })
+      );
+    } else {
+      setLikeBtn(true);
+      dispatch(
+        likeVideo({
+          id: vid,
+          Like: lk + 1,
+        })
+      );
+      setDislikeBtn(false);
     }
   };
-  const toggleDislikeBtn = () => {
-    if(DislikeBtn){
-        setDislikeBtn(false)
-    }else{
-        setDislikeBtn(true)
+  const toggleDislikeBtn = (e, lk) => {
+    if (DislikeBtn) {
+      setDislikeBtn(false);
+    } else {
+      setDislikeBtn(true);
+      if (LikeBtn) {
+        dispatch(
+          likeVideo({
+            id: vid,
+            Like: lk - 1,
+          })
+        );
+      }
+      setLikeBtn(false);
     }
   };
   return (
@@ -47,7 +74,10 @@ function LikeWatchLaterSaveBtns() {
         <BsThreeDots />
       </div>
       <div className="btn_VideoPage">
-        <div className="like_videoPage" onClick={(e) => toggleLikeBtn()}>
+        <div
+          className="like_videoPage"
+          onClick={(e) => toggleLikeBtn(e, vv.Like)}
+        >
           {LikeBtn ? (
             <>
               <AiFillLike size={22} className="btns_videoPage" />
@@ -57,9 +87,12 @@ function LikeWatchLaterSaveBtns() {
               <AiOutlineLike size={22} className="btns_videoPage" />
             </>
           )}
-          <b>Like</b>
+          <b>{vv.Like}</b>
         </div>
-        <div className="like_videoPage" onClick={(e) => toggleDislikeBtn()}>
+        <div
+          className="like_videoPage"
+          onClick={(e) => toggleDislikeBtn(e, vv.Like)}
+        >
           {DislikeBtn ? (
             <>
               <AiFillDislike size={22} className="btns_videoPage" />
@@ -69,7 +102,7 @@ function LikeWatchLaterSaveBtns() {
               <AiOutlineDislike size={22} className="btns_videoPage" />
             </>
           )}
-          {/* <b>DisLike</b> */}
+          <b>DisLike</b>
         </div>
         <div className="like_videoPage" onClick={() => toggleSavedVideo()}>
           {SaveVideo ? (

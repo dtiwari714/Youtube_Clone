@@ -22,3 +22,5 @@ export const uploadVideo = (fileData, fileOptions) =>
   api.post("/video/uploadVideo", fileData, fileOptions);
 
 export const getVideos = () => api.get("/video/getvideos");
+
+export const likeVideo = (id, Like) => api.patch(`/video/like/${id}`, { Like });

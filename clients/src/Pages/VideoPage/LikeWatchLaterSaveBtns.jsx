@@ -17,6 +17,7 @@ import {
   RiPlayListAddFill,
   RiShareForwardLine,
 } from "react-icons/ri";
+import { addTolikedVideo } from "../../Actions/likedVideo";
 
 function LikeWatchLaterSaveBtns({ vv, vid }) {
   const CurrentUser = useSelector((state) => state?.currentUserReducer);
@@ -33,39 +34,54 @@ function LikeWatchLaterSaveBtns({ vv, vid }) {
     }
   };
   const toggleLikeBtn = (e, lk) => {
-    if (LikeBtn) {
-      setLikeBtn(false);
+    if (CurrentUser) {
+      if (LikeBtn) {
+        setLikeBtn(false);
       dispatch(
         likeVideo({
           id: vid,
-          Like: lk - 1,
+          Like: Math.max(lk - 1, 0),
         })
       );
-    } else {
-      setLikeBtn(true);
+      } else {
+        setLikeBtn(true);
       dispatch(
         likeVideo({
           id: vid,
           Like: lk + 1,
         })
-      );
-      setDislikeBtn(false);
-    }
-  };
-  const toggleDislikeBtn = (e, lk) => {
-    if (DislikeBtn) {
-      setDislikeBtn(false);
-    } else {
-      setDislikeBtn(true);
-      if (LikeBtn) {
+        );
         dispatch(
-          likeVideo({
-            id: vid,
-            Like: lk - 1,
+          addTolikedVideo({
+            videoId: vid,
+            Viewer: CurrentUser?.result._id,
           })
         );
+        setDislikeBtn(false);
       }
-      setLikeBtn(false);
+    } else {
+      alert("Plz Login To give a like");
+    }
+  };
+
+  const toggleDislikeBtn = (e, lk) => {
+    if (CurrentUser) {
+      if (DislikeBtn) {
+        setDislikeBtn(false);
+      } else {
+        setDislikeBtn(true);
+        if (LikeBtn) {
+          dispatch(
+            likeVideo({
+              id: vid,
+              Like: lk - 1,
+            })
+          );
+        }
+        setLikeBtn(false);
+      }
+    } else {
+      alert("Plz Login To give a like");
     }
   };
   return (

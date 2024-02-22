@@ -6,7 +6,7 @@ export const updateChannelData = async (req, res) => {
   const { name, desc } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).send("Chanel Unavailable..");
+    return res.status(404).send("Channel Unavailable..");
   }
   try {
     const updateData = await users.findByIdAndUpdate(

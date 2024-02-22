@@ -8,12 +8,15 @@ import Comments from "../../components/Comments/Comments";
 import LikeWatchLaterSaveBtns from "./LikeWatchLaterSaveBtns";
 
 function VideoPage() {
-  const { vid } = useParams();
-  console.log(vid);
+   const { vid } = useParams();
+  // console.log(vid);
 
   const vids = useSelector((state) => state.videoReducer);
-  // console.log(vids)
-  const vv = vids?.data.filter((q) => q._id === vid)[0];
+  console.log(vids)
+  const vv = vids?.data?.filter((q) => q._id === vid)[0];
+  //console.log(vv)
+  const dispatch = useDispatch();
+  const CurrentUser = useSelector((state) => state?.currentUserReducer);
 
   return (
     <>

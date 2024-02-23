@@ -8,6 +8,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import CreateEditChannel from "./Pages/Channel/CreateEditChannel";
 import { fetchAllChanel } from "./Actions/channelUser";
 import { getAllVideo } from "./Actions/video";
+import { getAlllikedVideo } from "./Actions/likedVideo";
+
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +17,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchAllChanel());
     dispatch(getAllVideo());
+    dispatch(getAlllikedVideo());
   }, [dispatch]);
 
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({

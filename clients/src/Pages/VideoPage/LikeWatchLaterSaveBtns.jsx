@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import "./LikeWatchLaterSaveBtns.css";
 import { likeVideo } from "../../Actions/video";
@@ -25,6 +25,16 @@ function LikeWatchLaterSaveBtns({ vv, vid }) {
   const [SaveVideo, setSaveVideo] = useState(false);
   const [DislikeBtn, setDislikeBtn] = useState(false);
   const [LikeBtn, setLikeBtn] = useState(false);
+
+  const likedVideoList = useSelector((state) => state.likedVideoReducer);
+
+  useEffect(() => {
+    likedVideoList?.data
+      .filter(
+        (q) => q?.videoId === vid && q?.Viewer === CurrentUser?.result._id
+      )
+      .map((m) => setLikeBtn(true));
+  }, []);
 
   const toggleSavedVideo = () => {
     if (SaveVideo) {

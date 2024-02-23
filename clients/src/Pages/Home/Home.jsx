@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import LeftSideBar from "../../components/LeftSideBar/LeftSideBar";
 import ShowVideoGrid from "../../components/ShowVideoGrid/ShowVideoGrid";
-import vid from "../../components/Video/video.mp4";
+// import vid from "../../components/Video/video.mp4";
 import "./Home.css";
 function Home() {
   // console.log(videosFile)

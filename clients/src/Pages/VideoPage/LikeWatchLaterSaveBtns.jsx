@@ -18,6 +18,7 @@ import {
   RiShareForwardLine,
 } from "react-icons/ri";
 import { addTolikedVideo } from "../../Actions/likedVideo";
+import { addTowatchLater } from "../../Actions/watchLater";
 
 function LikeWatchLaterSaveBtns({ vv, vid }) {
   const CurrentUser = useSelector((state) => state?.currentUserReducer);
@@ -27,6 +28,7 @@ function LikeWatchLaterSaveBtns({ vv, vid }) {
   const [LikeBtn, setLikeBtn] = useState(false);
 
   const likedVideoList = useSelector((state) => state.likedVideoReducer);
+  const watchLaterList= useSelector(state=>state.watchLaterReducer)
 
   useEffect(() => {
     likedVideoList?.data
@@ -34,15 +36,38 @@ function LikeWatchLaterSaveBtns({ vv, vid }) {
         (q) => q?.videoId === vid && q?.Viewer === CurrentUser?.result._id
       )
       .map((m) => setLikeBtn(true));
+      watchLaterList?.data
+      .filter(
+        (q) => q?.videoId === vid && q?.Viewer === CurrentUser?.result._id
+      )
+      .map((m) => setSaveVideo(true));
   }, []);
 
   const toggleSavedVideo = () => {
-    if (SaveVideo) {
-      setSaveVideo(false);
+    if (CurrentUser) {
+      if (SaveVideo) {
+        setSaveVideo(false);
+        // dispatch(
+        //   deleteWatchLater({
+        //     videoId: vid,
+        //     Viewer: CurrentUser?.result._id,
+        //   })
+        // );
+      } else {
+        setSaveVideo(true);
+        dispatch(
+          addTowatchLater({
+            videoId: vid,
+            Viewer: CurrentUser?.result._id,
+          })
+        );
+      }
     } else {
-      setSaveVideo(true);
+      alert("Plz Login To save the video !");
     }
   };
+
+
   const toggleLikeBtn = (e, lk) => {
     if (CurrentUser) {
       if (LikeBtn) {

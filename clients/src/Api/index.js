@@ -30,3 +30,7 @@ export const addToLikedVideo = (likedVideoData) =>
 
 export const getAlllikedVideo = () => api.get("/video/getAlllikeVideo");
 
+export const addTowatchLater = (watchLaterData) =>
+  api.post("/video/watchLater", watchLaterData);
+  export const getAllwatchLater = () => api.get("/video/getAllwatchLater");
+

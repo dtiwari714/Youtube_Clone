@@ -11,6 +11,7 @@ import { getAllVideo } from "./Actions/video";
 import { getAlllikedVideo } from "./Actions/likedVideo";
 
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
+import { getAllwatchLater } from "./Actions/watchLater";
 function App() {
   const dispatch = useDispatch();
 
@@ -18,6 +19,7 @@ function App() {
     dispatch(fetchAllChanel());
     dispatch(getAllVideo());
     dispatch(getAlllikedVideo());
+    dispatch(getAllwatchLater());
   }, [dispatch]);
 
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({

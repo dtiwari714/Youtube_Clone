@@ -4,6 +4,7 @@ import currentUserReducer from "./currentUser";
 import chanelReducers from "./Channel";
 import videoReducer from "./Video";
 import likedVideoReducer from "./likedVideo";
+import watchLaterReducer from "./watchLater";
 
 export default combineReducers({
   authReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   chanelReducers,
   videoReducer,
   likedVideoReducer,
+  watchLaterReducer
 });

@@ -27,10 +27,13 @@ export const likeVideo = (id, Like) => api.patch(`/video/like/${id}`, { Like });
 
 export const addToLikedVideo = (likedVideoData) =>
   api.post("/video/likeVideo", likedVideoData);
-
 export const getAlllikedVideo = () => api.get("/video/getAlllikeVideo");
+export const deletelikedVideo = (videoId, Viewer) =>
+  api.delete(`/video/deleteLikedVideo/${videoId}/${Viewer}`);
 
 export const addTowatchLater = (watchLaterData) =>
   api.post("/video/watchLater", watchLaterData);
-  export const getAllwatchLater = () => api.get("/video/getAllwatchLater");
+export const getAllwatchLater = () => api.get("/video/getAllwatchLater");
+export const deleteWatchLater = (videoId, Viewer) =>
+  api.delete(`/video/deleteWatchlater/${videoId}/${Viewer}`);
 

@@ -37,3 +37,8 @@ export const getAllwatchLater = () => api.get("/video/getAllwatchLater");
 export const deleteWatchLater = (videoId, Viewer) =>
   api.delete(`/video/deleteWatchlater/${videoId}/${Viewer}`);
 
+export const addToHistory = (HistoryData) =>
+  api.post("/video/History", HistoryData);
+export const getAllHistory = () => api.get("/video/getAllHistory");
+export const deleteHistory = (userId) =>
+  api.delete(`/video/deleteHistory/${userId}`);

@@ -4,6 +4,7 @@ import upload from "../Helpers/fileHelpers.js";
 import {likeController} from '../Controllers/like.js'
 import { likeVideoController ,getAlllikeVideoController, deleteLikeVideoController} from "../Controllers/likeVideo.js";
 import { deletewatchLaterController, getAllwatchLaterController, watchLaterController } from "../Controllers/watchLater.js";
+import { HistoryController, deleteHistoryController, getAllHistoryController } from "../Controllers/History.js";
 
 const routes = express.Router();
 
@@ -18,5 +19,9 @@ routes.delete('/deleteLikedVideo/:videoId/:Viewer',deleteLikeVideoController)
 routes.post('/watchLater',watchLaterController)
 routes.get('/getAllwatchLater',getAllwatchLaterController)
 routes.delete('/deleteWatchlater/:videoId/:Viewer',deletewatchLaterController)
+
+routes.post('/History',HistoryController)
+routes.get('/getAllHistory',getAllHistoryController)
+routes.delete('/deleteHistory/:userId',deleteHistoryController)
 
 export default routes;

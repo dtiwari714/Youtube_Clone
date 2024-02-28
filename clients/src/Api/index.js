@@ -20,10 +20,9 @@ export const fetchAllChanel = () => api.get("/user/getAllChannels");
 
 export const uploadVideo = (fileData, fileOptions) =>
   api.post("/video/uploadVideo", fileData, fileOptions);
-
 export const getVideos = () => api.get("/video/getvideos");
-
 export const likeVideo = (id, Like) => api.patch(`/video/like/${id}`, { Like });
+export const viewsVideo = (id) => api.patch(`/video/view/${id}`);
 
 export const addToLikedVideo = (likedVideoData) =>
   api.post("/video/likeVideo", likedVideoData);

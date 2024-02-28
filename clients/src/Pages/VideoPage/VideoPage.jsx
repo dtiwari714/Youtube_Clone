@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Comments from "../../components/Comments/Comments";
 import LikeWatchLaterSaveBtns from "./LikeWatchLaterSaveBtns";
 import { addToHistory } from "../../Actions/History";
-// import { viewVideo } from "../../Actions/video";
+import { viewVideo } from "../../Actions/video";
 
 function VideoPage() {
    const { vid } = useParams();
@@ -28,17 +28,17 @@ function VideoPage() {
       })
     );
   };
-  // const handleViews=()=>{
-  //   dispatch( viewVideo({
-  //     id:vid
-  //   }))
-  // }
+  const handleViews=()=>{
+    dispatch( viewVideo({
+      id:vid
+    }))
+  }
 
   useEffect(() => {
     if (CurrentUser) {
       handleHistory();
     }
-    // handleViews();
+    handleViews();
   }, []);
   return (
     <>

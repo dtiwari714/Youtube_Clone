@@ -1,48 +1,53 @@
 import React from "react";
 import LeftSideBar from "../../components/LeftSideBar/LeftSideBar";
 import "./Library.css";
-import vid from "../../components/Video/video.mp4";
+// import vid from "../../components/Video/video.mp4";
 import { FaHistory } from "react-icons/fa";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { AiOutlineLike } from "react-icons/ai";
 import WHLVideoList from "../../components/WHL/WHLVideoList";
+import { useSelector } from "react-redux";
 
 function Library() {
-  const vids = [
-    {
-      _id: 1,
-      video_src: vid,
-      Chanel: "62bafe6752cea35a6c30685f",
-      title: "video 1",
-      Uploder: "abc",
-      description: "description of  video 1",
-    },
-    {
-      _id: 2,
-      video_src: vid,
-      Chanel: "cdd",
-      title: "video 2",
-      Uploder: "abc",
-      description: "description of  video 2",
-    },
-    {
-      _id: 3,
-      video_src: vid,
-      Chanel: "add",
-      title: "video 3",
-      Uploder: "abc",
-      description: "description of  video 3",
-    },
-    {
-      _id: 4,
-      video_src: vid,
-      Chanel: "add",
-      title: "video 3",
-      Uploder: "abc",
-      description: "description of  video 3",
-    },
-  ];
+  // const vids = [
+  //   {
+  //     _id: 1,
+  //     video_src: vid,
+  //     Chanel: "62bafe6752cea35a6c30685f",
+  //     title: "video 1",
+  //     Uploder: "abc",
+  //     description: "description of  video 1",
+  //   },
+  //   {
+  //     _id: 2,
+  //     video_src: vid,
+  //     Chanel: "cdd",
+  //     title: "video 2",
+  //     Uploder: "abc",
+  //     description: "description of  video 2",
+  //   },
+  //   {
+  //     _id: 3,
+  //     video_src: vid,
+  //     Chanel: "add",
+  //     title: "video 3",
+  //     Uploder: "abc",
+  //     description: "description of  video 3",
+  //   },
+  //   {
+  //     _id: 4,
+  //     video_src: vid,
+  //     Chanel: "add",
+  //     title: "video 3",
+  //     Uploder: "abc",
+  //     description: "description of  video 3",
+  //   },
+  // ];
+  const CurrentUser = useSelector((state) => state?.currentUserReducer);
 
+  const historyList = useSelector((state) => state.HistoryReducer);
+  const likedVideoList = useSelector((state) => state.likedVideoReducer);
+  const watchLaterList = useSelector((state) => state.watchLaterReducer);
   return (
     <div className="container_Pages_App">
       <LeftSideBar />
@@ -57,8 +62,8 @@ function Library() {
           <div className="container_videoList_LibraryPage">
             <WHLVideoList
               page={"History"}
-              // CurrentUser={CurrentUser?.result._id}
-              videoList={vids}
+              CurrentUser={CurrentUser?.result._id}
+              videoList={historyList}
             />
           </div>
         </div>
@@ -72,8 +77,8 @@ function Library() {
           <div className="container_videoList_LibraryPage">
             <WHLVideoList
               page={"Watch Later"}
-              // CurrentUser={CurrentUser?.result._id}
-              videoList={vids}
+              CurrentUser={CurrentUser?.result._id}
+              videoList={watchLaterList}
             />
           </div>
         </div>
@@ -87,8 +92,8 @@ function Library() {
           <div className="container_videoList_LibraryPage">
             <WHLVideoList
               page={"Liked Videos"}
-              // CurrentUser={CurrentUser?.result._id}
-              videoList={vids}
+              CurrentUser={CurrentUser?.result._id}
+              videoList={likedVideoList}
             />
           </div>
         </div>

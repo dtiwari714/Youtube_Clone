@@ -10,7 +10,7 @@ import { addToHistory } from "../../Actions/History";
 import { viewVideo } from "../../Actions/video";
 
 function VideoPage() {
-   const { vid } = useParams();
+  const { vid } = useParams();
   // console.log(vid);
 
   const vids = useSelector((state) => state.videoReducer);
@@ -28,11 +28,13 @@ function VideoPage() {
       })
     );
   };
-  const handleViews=()=>{
-    dispatch( viewVideo({
-      id:vid
-    }))
-  }
+  const handleViews = () => {
+    dispatch(
+      viewVideo({
+        id: vid,
+      })
+    );
+  };
 
   useEffect(() => {
     if (CurrentUser) {
@@ -60,7 +62,7 @@ function VideoPage() {
                     <div className="dot"></div>{" "}
                     {moment(vv?.createdAt).fromNow()}
                   </div>
-                  <LikeWatchLaterSaveBtns vv={vv} vid={vid}/>
+                  <LikeWatchLaterSaveBtns vv={vv} vid={vid} />
                 </div>
               </div>
 
@@ -79,7 +81,7 @@ function VideoPage() {
                 </h2>
 
                 <Comments
-                // videoId={vv._id}
+                 videoId={vv._id}
                 />
               </div>
             </div>

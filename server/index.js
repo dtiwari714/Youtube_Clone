@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import userRoutes from "./Routes/user.js";
 import videoRoutes from "./Routes/video.js";
+import commentsRoutes from './Routes/comments.js'
 
 import path from "path";
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 
 app.use("/user", userRoutes);
 app.use("/video", videoRoutes);
+app.use('/comment',commentsRoutes)
 
 const DB_URL = process.env.CONNECTION_URL;
 mongoose

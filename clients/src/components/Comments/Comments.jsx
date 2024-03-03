@@ -28,7 +28,7 @@ function Comments({ videoId }) {
         setCommentText("");
       }
     } else {
-      alert("Plz login to post your commnet !");
+      alert("Plz login to post your comment !");
     }
   };
   // const commentsList = [

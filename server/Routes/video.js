@@ -6,24 +6,25 @@ import { likeVideoController ,getAlllikeVideoController, deleteLikeVideoControll
 import { deletewatchLaterController, getAllwatchLaterController, watchLaterController } from "../Controllers/watchLater.js";
 import { HistoryController, deleteHistoryController, getAllHistoryController } from "../Controllers/History.js";
 import { viewController } from "../Controllers/views.js";
+import auth from "../Middleware/auth.js";
 
 const routes = express.Router();
 
-routes.post("/uploadVideo", upload.single("file"), uploadVideo);
+routes.post("/uploadVideo",auth,upload.single("file"), uploadVideo);
 routes.get("/getvideos",getAllvideos);
-routes.patch('/like/:id',likeController)
+routes.patch('/like/:id',auth,likeController)
 routes.patch('/view/:id',viewController)
 
-routes.post('/likeVideo',likeVideoController)
+routes.post('/likeVideo',auth,likeVideoController)
 routes.get('/getAlllikeVideo',getAlllikeVideoController)
-routes.delete('/deleteLikedVideo/:videoId/:Viewer',deleteLikeVideoController)
+routes.delete('/deleteLikedVideo/:videoId/:Viewer',auth,deleteLikeVideoController)
 
-routes.post('/watchLater',watchLaterController)
+routes.post('/watchLater',auth,watchLaterController)
 routes.get('/getAllwatchLater',getAllwatchLaterController)
-routes.delete('/deleteWatchlater/:videoId/:Viewer',deletewatchLaterController)
+routes.delete('/deleteWatchlater/:videoId/:Viewer',auth,deletewatchLaterController)
 
-routes.post('/History',HistoryController)
+routes.post('/History',auth,HistoryController)
 routes.get('/getAllHistory',getAllHistoryController)
-routes.delete('/deleteHistory/:userId',deleteHistoryController)
+routes.delete('/deleteHistory/:userId',auth,deleteHistoryController)
 
 export default routes;

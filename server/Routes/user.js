@@ -1,6 +1,5 @@
 import express from "express";
 import {login} from '../Controllers/auth.js'
-// import { updateChannelData } from "";
 import {updateChannelData,getAllChanels} from '../Controllers/channel.js'
 
 

@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "builds": [{ "src": "../server/index.js", "use": "@vercel/node" }],
-  "routes": [
-    { "src": "/api/user/(.*)", "dest": "./serverRoutes/comments.js" },
-    { "src": "/api/video/(.*)", "dest": "./serverRoutes/video.js" },
-    { "src": "/api/comments/(.*)", "dest": "./serverRoutes/comments.js" }
-  ]
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+
+  ],
+
+  "rewrites": [{ "source": "/(.*)", "destination": "index.js" }]
 }

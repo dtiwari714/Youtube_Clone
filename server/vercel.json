@@ -1,12 +1,10 @@
 {
     "version": 2,
     "builds": [
-        { "src": "server/index.js", "use": "@vercel/node" }
+        { "src": "index.js", "use": "@vercel/node" }
     ],
     "routes": [
-        { "src": "/api/comments/(.*)", "dest": "server/Routes/comments.js" },
-        { "src": "/api/user/(.*)", "dest": "server/Routes/user.js" },
-        { "src": "/api/video/(.*)", "dest": "server/Routes/video.js" }
+        { "src": "/(.*)", "dest": "index.js" }
     ]
 }    
 

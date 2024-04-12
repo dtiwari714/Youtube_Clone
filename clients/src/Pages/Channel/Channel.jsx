@@ -51,6 +51,7 @@ function Channel({ setEditCreateChanelBtn, setVidUploadPage }) {
           Cid={Cid}
           setVidUploadPage={setVidUploadPage}
           setEditCreateChanelBtn={setEditCreateChanelBtn}
+    
         />
         <ShowVideoGrid vids={vids} />
       </div>

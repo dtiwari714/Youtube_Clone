@@ -48,7 +48,7 @@ function VideoPage() {
         <div className="container2_videoPage">
           <div className="video_display_screen_videoPage">
             <video
-              src={`https://youtube-clone-du4m.vercel.app/${vv?.filePath}`}
+              src={`https://youtube-clone-back.vercel.app/${vv?.filePath}`}
               className={"video_ShowVideo_videoPage"}
               controls
               // autoPlay

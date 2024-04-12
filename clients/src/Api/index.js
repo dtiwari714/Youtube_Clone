@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const api = axios.create({ baseURL: `http://localhost:5500/` });
-const api = axios.create({ baseURL: `https://youtube-clone-du4m.vercel.app/` });
+const api = axios.create({ baseURL: `https://youtube-clone-back.vercel.app/` });
 
 
 api.interceptors.request.use((req) => {

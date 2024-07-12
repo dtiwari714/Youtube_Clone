@@ -29,7 +29,7 @@ function VideoUpload({ setVidUploadPage }) {
   };
 
   const uploadVideoFile = () => {
-    if (!title.trim()) {
+    if (!title) {
       alert("Plz Enter A Title of the video");
     } else if (!videoFile) {
       alert("Plz Attach a video File");
@@ -41,7 +41,7 @@ function VideoUpload({ setVidUploadPage }) {
       fileData.append("title", title);
       fileData.append("chanel", CurrentUser?.result._id);
       fileData.append("Uploder", CurrentUser?.result.name);
-        // console.log(videoFile)
+      console.log(videoFile)
       dispatch(
         uploadVideo({
           fileData: fileData,

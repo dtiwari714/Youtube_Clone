@@ -8,6 +8,7 @@ import videoRoutes from "./Routes/video.js";
 import commentsRoutes from './Routes/comments.js'
 
 import path from "path";
+import fs from 'fs';
 
 dotenv.config();
 const app = express();

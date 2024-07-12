@@ -15,7 +15,20 @@ app.use(cors({origin: 'https://youtube-clone-five-phi.vercel.app'}));
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(bodyParser.json());
-app.use("/uploads", express.static(path.join("uploads")));
+//app.use("/uploads", express.static(path.join("uploads")));
+const uploadsDirectory = path.join(__dirname, 'uploads');
+
+// Ensure uploads directory exists
+try {
+  fs.accessSync(uploadsDirectory);
+  console.log('Uploads directory exists');
+} catch (error) {
+  console.log('Uploads directory does not exist. Creating...');
+  fs.mkdirSync(uploadsDirectory);
+  console.log('Uploads directory created');
+}
+app.use("/uploads", express.static(uploadsDirectory));
+
 
 app.get("/", (req, res) => {
   res.send("Hello World");

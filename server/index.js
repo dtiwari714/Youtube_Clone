@@ -14,12 +14,13 @@ const app = express();
 app.use(cors({origin: 'https://youtube-clone-five-phi.vercel.app'}));
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(bodyParser.json());
 app.use("/uploads", express.static(path.join("uploads")));
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-app.use(bodyParser.json());
+
 
 app.use("/user", userRoutes);
 app.use("/video", videoRoutes);

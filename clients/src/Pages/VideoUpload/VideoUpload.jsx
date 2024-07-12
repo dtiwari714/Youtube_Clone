@@ -29,12 +29,12 @@ function VideoUpload({ setVidUploadPage }) {
   };
 
   const uploadVideoFile = () => {
-    if (!title) {
+    if (!title.trim()) {
       alert("Plz Enter A Title of the video");
     } else if (!videoFile) {
       alert("Plz Attach a video File");
     } else if (videoFile.size > 1000000) {
-      alert("Plz Attch video file less than 1kb");
+      alert("Plz Attch video file less than 1MB");
     } else {
       const fileData = new FormData();
       fileData.append("file", videoFile);
